@@ -1,0 +1,13 @@
+{
+    "name": "root/api",
+    "require": {
+        "illuminate/events": "^5.2",
+        "illuminate/database": "^5.2"
+    },
+    "authors": [
+        {
+            "name": "isratmir",
+            "email": "isratmir@yandex.ru"
+        }
+    ]
+}

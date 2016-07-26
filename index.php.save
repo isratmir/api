@@ -1,0 +1,3 @@
+<?php 
+	$req = explode('/', trim($_SERVER['REQUEST_URI']));
+	var_dump($_SERVER['REQUEST_METHOD']);

@@ -1,0 +1,20 @@
+RewriteEngine On
+
+#without www
+#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+#with www
+#RewriteCond %{HTTP_HOST} ^(?!www\.)(.+)
+#RewriteRule ^(.*) http://www.%1/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* ./index.php
+
+<Files *.ini>
+	order deny,allow
+	deny from all
+</Files>
+
+AddDefaultCharset UTF-8
