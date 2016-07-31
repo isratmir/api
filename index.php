@@ -41,7 +41,7 @@
 			echo json_encode($res);
 		}
 		elseif($method==='GET'){
-			$q = Capsule::table('expenses')->get();
+			$q = Capsule::table('expenses')->orderBy('sid')->get();
 
 			$res = array('status'=>'success', 'result'=>$q);
 			header('Content-Type: application/json');
@@ -57,12 +57,19 @@
 	}
 	elseif ( empty($req[1]) ){
 ?>
+		<html>
+		<header>
+			<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+		</header>
+		<body>
 		<form action="" method="put">
 			<input type="hidden" name="interface" value="true">
 			<input type="text" name="title" id="" placeholder="Title">
 			<input type="text" name="price" id="" placeholder="Price">
 			<input type="submit" value="Save">
 		</form>
+		</body>
+		</html>
 <?php
 	}
 
@@ -70,4 +77,5 @@ if(isset($_GET['interface']) && $_GET['interface'] === 'true'){
 	$insert = Capsule::table('expenses')->insert(
 			['title'=>$_GET['title'],'price'=>$_GET['price']]
 	);
+	header('Location: http://api.sanarip.com');
 }
